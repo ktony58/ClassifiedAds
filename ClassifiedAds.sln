@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29926.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassifiedAds", "ClassifiedAds\ClassifiedAds.csproj", "{47E40736-4ECA-437A-A35F-7A9B449277C3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{56D6CE76-F6FB-4E74-AA65-60ACAB900748}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassifiedAds", "ClassifiedAds\ClassifiedAds.csproj", "{7D717844-4551-4A09-A3A6-EC2404ADAF4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{47E40736-4ECA-437A-A35F-7A9B449277C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{47E40736-4ECA-437A-A35F-7A9B449277C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{47E40736-4ECA-437A-A35F-7A9B449277C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{47E40736-4ECA-437A-A35F-7A9B449277C3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{56D6CE76-F6FB-4E74-AA65-60ACAB900748}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56D6CE76-F6FB-4E74-AA65-60ACAB900748}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56D6CE76-F6FB-4E74-AA65-60ACAB900748}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56D6CE76-F6FB-4E74-AA65-60ACAB900748}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D717844-4551-4A09-A3A6-EC2404ADAF4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D717844-4551-4A09-A3A6-EC2404ADAF4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D717844-4551-4A09-A3A6-EC2404ADAF4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D717844-4551-4A09-A3A6-EC2404ADAF4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
