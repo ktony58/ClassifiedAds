@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ClassifiedAds.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using ClassifiedAds.Models;
+using System.Diagnostics;
 
 namespace ClassifiedAds.Controllers
 {

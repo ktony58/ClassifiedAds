@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ClassifiedAds.Models.MasterAdvertisementModel>
+
+@{
+    ViewData["Title"] = "My Advertisements";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create a New Advertisement</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Advertisement.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Advertisement.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Advertisement.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Advertisement.CostPerClick)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalClicks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCost)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Advertisement.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Advertisement.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Advertisement.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Advertisement.CostPerClick)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalClicks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalCost)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Advertisement.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Advertisement.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Advertisement.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

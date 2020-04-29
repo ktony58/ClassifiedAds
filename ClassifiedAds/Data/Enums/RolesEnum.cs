@@ -1,4 +1,4 @@
-﻿namespace ClassifiedAds.Data
+﻿namespace ClassifiedAds.Data.Enums
 {
     public enum RolesEnum
     {

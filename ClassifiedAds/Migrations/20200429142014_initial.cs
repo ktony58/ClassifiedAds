@@ -69,6 +69,28 @@ namespace ClassifiedAds.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Advertisements",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OwnerId = table.Column<string>(nullable: false),
+                    Title = table.Column<string>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    Address = table.Column<string>(nullable: false),
+                    CostPerClick = table.Column<decimal>(type: "decimal(5, 2)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Advertisements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Advertisements_AspNetUsers_OwnerId",
+                        column: x => x.OwnerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
@@ -153,6 +175,38 @@ namespace ClassifiedAds.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "UserAdvertisements",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AdvertisementId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: false),
+                    Clicks = table.Column<int>(nullable: false),
+                    CostPerClick = table.Column<decimal>(type: "decimal(5, 2)", nullable: false),
+                    RedirectId = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserAdvertisements", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserAdvertisements_Advertisements_AdvertisementId",
+                        column: x => x.AdvertisementId,
+                        principalTable: "Advertisements",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_UserAdvertisements_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Advertisements_OwnerId",
+                table: "Advertisements",
+                column: "OwnerId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -191,6 +245,16 @@ namespace ClassifiedAds.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserAdvertisements_AdvertisementId",
+                table: "UserAdvertisements",
+                column: "AdvertisementId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserAdvertisements_UserId",
+                table: "UserAdvertisements",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -211,7 +275,13 @@ namespace ClassifiedAds.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "UserAdvertisements");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Advertisements");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
