@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ClassifiedAds.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationIdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
