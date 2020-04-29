@@ -13,7 +13,10 @@
     <!-- Overlay content -->
     <div class="overlay-content">
         <form id="external-account" class="col-md-6" asp-area="Identity" asp-page="/Account/ExternalLogin" method="post">
-            <a type="submit" onclick="this.closest('form').submit();return false;" href="#">Register as a user</a>
+            <a type="submit" onclick="this.closest('form').submit();return false;" href="#">
+                Register as a user
+                <div class="btn btn-primary">Facebook</div>
+            </a>
         </form>
         <div class="vertical-divider"></div>
         <a class="col-md-6 overlay-button" asp-area="Identity" asp-page="/Account/Register">Register as an advertiser</a>
@@ -28,7 +31,10 @@
     <!-- Overlay content -->
     <div class="overlay-content">
         <form id="external-account" class="col-md-6" asp-area="Identity" asp-page="/Account/ExternalLogin" method="post">
-            <a type="submit" onclick="this.closest('form').submit();return false;" href="#">Login as a user</a>
+            <a type="submit" onclick="this.closest('form').submit();return false;" href="#">
+                Login as a user
+                <div class="btn btn-primary">Facebook</div>
+            </a>
         </form>
         <div class="vertical-divider"></div>
         <a class="col-md-6 overlay-button" asp-area="Identity" asp-page="/Account/Login">Login as an advertiser</a>
