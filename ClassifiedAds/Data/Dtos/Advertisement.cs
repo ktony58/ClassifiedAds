@@ -23,6 +23,9 @@ namespace ClassifiedAds.Data.Dtos
         [Display(Name = "Current Cost Per Click")]
         public decimal CostPerClick { get; set; }
 
+        [Required]
+        public bool IsActive { get; set; }
+
         public IEnumerable<UserAdvertisement> UserAdvertisements { get; set; }
     }
 }
