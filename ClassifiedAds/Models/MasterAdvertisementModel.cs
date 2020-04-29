@@ -10,7 +10,7 @@ namespace ClassifiedAds.Models
         [Display(Name = "Clicks")]
         public int TotalClicks { get; set; }
 
-        [Display(Name = "Total Cost")]
+        [Display(Name = "Total Spend")]
         public decimal TotalCost { get; set; }
     }
 }

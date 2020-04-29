@@ -6,11 +6,11 @@
 
 <h1>@ViewData["Title"]</h1>
 
-<p>
-    <a asp-action="Create">Create a New Advertisement</a>
+<p style="padding-top: 50px">
+    <a class="btn-primary" asp-action="Create">Create a New Advertisement</a>
 </p>
-<table class="table">
-    <thead>
+<table class='table table-condensed table-responsive-lg text-nowrap table-hover'>
+    <thead class="thead-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Advertisement.Title)
@@ -30,36 +30,32 @@
             <th>
                 @Html.DisplayNameFor(model => model.TotalCost)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Advertisement.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Advertisement.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Advertisement.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Advertisement.CostPerClick)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalClicks)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalCost)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Advertisement.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Advertisement.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Advertisement.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.OrderByDescending(i => i.Advertisement.IsActive))
+        {
+            string opacity = item.Advertisement.IsActive ? null : "opacity: 0.5";
+            <tr style="@opacity" onclick="location.href = '@(Url.Action("Edit", "Advertiser", new { id = item.Advertisement.Id }))'">
+                <td class="col-md-2">
+                    @Html.DisplayFor(modelItem => item.Advertisement.Title)
+                </td>
+                <td class="col-6">
+                    @Html.DisplayFor(modelItem => item.Advertisement.Description)
+                </td>
+                <td class="col-1">
+                    @Html.DisplayFor(modelItem => item.Advertisement.Address)
+                </td>
+                <td class="col-1">
+                    @Html.DisplayFor(modelItem => item.Advertisement.CostPerClick)
+                </td>
+                <td class="col-1">
+                    @Html.DisplayFor(modelItem => item.TotalClicks)
+                </td>
+                <td class="col-1">
+                    @Html.DisplayFor(modelItem => item.TotalCost)
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

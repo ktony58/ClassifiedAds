@@ -8,7 +8,6 @@ namespace ClassifiedAds.Data.Dtos
     {
         public int Id { get; set; }
 
-        [Required]
         public ApplicationIdentityUser Owner { get; set; }
 
         [Required]
@@ -19,11 +18,11 @@ namespace ClassifiedAds.Data.Dtos
         [Required]
         public string Address { get; set; }
 
+        [Required]
         [Column(TypeName = "decimal(5, 2)")]
         [Display(Name = "Current Cost Per Click")]
         public decimal CostPerClick { get; set; }
 
-        [Required]
         public bool IsActive { get; set; }
 
         public IEnumerable<UserAdvertisement> UserAdvertisements { get; set; }

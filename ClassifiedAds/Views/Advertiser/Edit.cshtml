@@ -5,42 +5,58 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CostPerClick" class="control-label"></label>
-                <input asp-for="CostPerClick" class="form-control" />
-                <span asp-validation-for="CostPerClick" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<form asp-action="Edit" class="form-style-7">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <ul>
+        <li>
+            <label asp-for="Title"></label>
+            <input asp-for="Title" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </li>
+        <li>
+            <label asp-for="Description"></label>
+            <textarea id="description-textarea" asp-for="Description" oninput="adjust_textarea(this)"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </li>
+        <li>
+            <label asp-for="Address"></label>
+            <input asp-for="Address" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </li>
+        <li>
+            <label asp-for="CostPerClick"></label>
+            <input asp-for="CostPerClick" />
+            <span asp-validation-for="CostPerClick" class="text-danger"></span>
+        </li>
+        <li>
+            <input type="submit" value="Save" />
+            <a asp-action="Index">Back</a>
+
+            @if (Model.IsActive)
+            {
+                <a asp-action="Delete" asp-route-id="@Model.Id" class="danger">Stop Advertisement</a>
+            }
+            else
+            {
+                <a asp-action="Enable" asp-route-id="@Model.Id" class="green">Start Advertisement</a>
+            }
+        </li>
+    </ul>
+</form>
+
+<script type="text/javascript">
+    window.onload = function () {
+        adjust_textarea(this.document.getElementById("description-textarea"));
+    }
+
+    //auto expand textarea
+    function adjust_textarea(h) {
+        h.style.height = "20px";
+        h.style.height = (h.scrollHeight) + "px";
+    }
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

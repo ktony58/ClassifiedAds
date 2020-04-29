@@ -5,41 +5,44 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="form-control" />
-                <span asp-validation-for="Address" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CostPerClick" class="control-label"></label>
-                <input asp-for="CostPerClick" class="form-control" />
-                <span asp-validation-for="CostPerClick" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+<form asp-action="Create" class="form-style-7">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <ul>
+        <li>
+            <label asp-for="Title"></label>
+            <input asp-for="Title"/>
+            <span asp-validation-for="Title"></span>
+        </li>
+        <li>
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" oninput="adjust_textarea(this)"></textarea>
+            <span asp-validation-for="Description"></span>
+        </li>
+        <li>
+            <label asp-for="Address"></label>
+            <input asp-for="Address"/>
+            <span asp-validation-for="Address"></span>
+        </li>
+        <li>
+            <label asp-for="CostPerClick"></label>
+            <input asp-for="CostPerClick"/>
+            <span asp-validation-for="CostPerClick"></span>
+        </li>
+        <li>
+            <input type="submit" value="Create" />
+            <a asp-action="Index">Back</a>
+        </li>
+    </ul>
+</form>
+
+<script type="text/javascript">
+    //auto expand textarea
+    function adjust_textarea(h) {
+        h.style.height = "20px";
+        h.style.height = (h.scrollHeight) + "px";
+    }
+</script>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
