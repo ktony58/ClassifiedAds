@@ -25,7 +25,11 @@ namespace ClassifiedAds.Controllers
 
         public async Task<IActionResult> Index()
         {
+            var currentUser = await _userManager.GetUserAsync(User);
+
             var masterAdvertisements = await _context.Advertisements
+                .Include(i => i.Owner)
+                .Where(a => a.Owner.Id == currentUser.Id)
                 .Select(ad => new MasterAdvertisementModel
                 {
                     Advertisement = ad,
@@ -64,8 +68,11 @@ namespace ClassifiedAds.Controllers
             {
                 return NotFound();
             }
-
-            var advertisement = await _context.Advertisements.FindAsync(id);
+            var currentUser = await _userManager.GetUserAsync(User);
+            var advertisement = await _context.Advertisements
+                .Include(i => i.Owner)
+                .Where(a => a.Owner.Id == currentUser.Id && a.Id == id)
+                .FirstOrDefaultAsync();
             if (advertisement == null)
             {
                 return NotFound();
@@ -112,7 +119,10 @@ namespace ClassifiedAds.Controllers
                 return NotFound();
             }
 
+            var currentUser = await _userManager.GetUserAsync(User);
             var advertisement = await _context.Advertisements
+                .Include(i => i.Owner)
+                .Where(a => a.Owner.Id == currentUser.Id && a.Id == id)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (advertisement == null)
             {
@@ -131,7 +141,10 @@ namespace ClassifiedAds.Controllers
                 return NotFound();
             }
 
+            var currentUser = await _userManager.GetUserAsync(User);
             var advertisement = await _context.Advertisements
+                .Include(i => i.Owner)
+                .Where(a => a.Owner.Id == currentUser.Id && a.Id == id)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (advertisement == null)
             {
