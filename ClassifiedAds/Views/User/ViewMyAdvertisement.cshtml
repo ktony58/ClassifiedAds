@@ -1,0 +1,59 @@
+﻿@model ClassifiedAds.Data.Dtos.UserAdvertisement
+
+@{
+    ViewData["Title"] = "My Advertisement";
+}
+
+<h1>@ViewData["Title"]</h1>
+<form asp-action="Advertise" class="form-style-7">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <ul>
+        <li>
+            <label asp-for="Advertisement.Title"></label>
+            <input asp-for="Advertisement.Title" disabled />
+            <span asp-validation-for="Advertisement.Title" class="text-danger"></span>
+        </li>
+        <li>
+            <label asp-for="Advertisement.Description"></label>
+            <textarea id="description-textarea" asp-for="Advertisement.Description" oninput="adjust_textarea(this)" disabled></textarea>
+            <span asp-validation-for="Advertisement.Description" class="text-danger"></span>
+        </li>
+        <li>
+            <label asp-for="Advertisement.Address"></label>
+            <input asp-for="Advertisement.Address" disabled />
+            <span asp-validation-for="Advertisement.Address" class="text-danger"></span>
+        </li>
+        <li>
+            <label asp-for="Clicks"></label>
+            <input asp-for="Clicks" disabled />
+            <span asp-validation-for="Clicks" class="text-danger"></span>
+        </li>
+        <li>
+            <label asp-for="CostPerClick"></label>
+            <input asp-for="CostPerClick" disabled />
+            <span asp-validation-for="CostPerClick" class="text-danger"></span>
+        </li>
+        <li>
+            <label>Share this</label>
+            <a class="no-style">@(Url.ActionLink(controller: "Tracking", values: new { guid = Model.RedirectId}))</a>
+        </li>
+        <li>
+            <a style="float:none" asp-action="Delete" asp-route-id="@Model.Id" class="danger">Stop Advertisement</a>
+            <a asp-action="Index">Back</a>
+        </li>
+    </ul>
+</form>
+
+<script type="text/javascript">
+    window.onload = function () {
+        adjust_textarea(this.document.getElementById("description-textarea"));
+    }
+
+    //auto expand textarea
+    function adjust_textarea(h) {
+        h.style.height = "20px";
+        h.style.height = (h.scrollHeight) + "px";
+    }
+</script>

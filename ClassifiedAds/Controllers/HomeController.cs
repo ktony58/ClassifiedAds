@@ -25,12 +25,15 @@ namespace ClassifiedAds.Controllers
             if (User.IsInRole(nameof(RolesEnum.Advertiser)))
             {
                 return RedirectToAction("Index", "Advertiser");
+            } else if (User.IsInRole(nameof(RolesEnum.User)))
+            {
+                return RedirectToAction("Index", "User");
             }
 
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult About()
         {
             return View();
         }

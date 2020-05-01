@@ -1,0 +1,50 @@
+﻿@model ClassifiedAds.Data.Dtos.Advertisement
+
+@{
+    ViewData["Title"] = "Advertisement";
+}
+
+<h1>@ViewData["Title"]</h1>
+<form asp-action="Advertise" class="form-style-7">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Id" />
+
+    <ul>
+        <li>
+            <label asp-for="Title"></label>
+            <input asp-for="Title" disabled/>
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </li>
+        <li>
+            <label asp-for="Description"></label>
+            <textarea id="description-textarea" asp-for="Description" oninput="adjust_textarea(this)" disabled></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </li>
+        <li>
+            <label asp-for="Address"></label>
+            <input asp-for="Address" disabled/>
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </li>
+        <li>
+            <label asp-for="CostPerClick"></label>
+            <input asp-for="CostPerClick" disabled/>
+            <span asp-validation-for="CostPerClick" class="text-danger"></span>
+        </li>
+        <li>
+            <input type="submit" value="Advertise" />
+            <a asp-action="Index">Back</a>
+        </li>
+    </ul>
+</form>
+
+<script type="text/javascript">
+    window.onload = function () {
+        adjust_textarea(this.document.getElementById("description-textarea"));
+    }
+
+    //auto expand textarea
+    function adjust_textarea(h) {
+        h.style.height = "20px";
+        h.style.height = (h.scrollHeight) + "px";
+    }
+</script>

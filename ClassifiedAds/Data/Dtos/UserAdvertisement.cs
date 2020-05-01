@@ -17,6 +17,7 @@ namespace ClassifiedAds.Data.Dtos
         public int Clicks { get; set; }
 
         [Column(TypeName = "decimal(5, 2)")]
+        [Display(Name = "Pay per Click")]
         public decimal CostPerClick { get; set; }
 
         [Required]

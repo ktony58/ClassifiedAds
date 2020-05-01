@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ClassifiedAds.Data.Dtos.Advertisement>
+
+@{
+    ViewData["Title"] = "Browse Advertisements";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class='table table-condensed table-responsive-lg text-nowrap table-hover'>
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostPerClick)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr onclick="location.href = '@(Url.Action("ViewAdvertisement", "User", new { id = item.Id }))'">
+                <td class="col-md-2">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td class="col-6">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="col-1">
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td class="col-1">
+                    @Html.DisplayFor(modelItem => item.CostPerClick)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

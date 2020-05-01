@@ -9,6 +9,14 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
+input:disabled {
+    background-color: white;
+}
+
+textarea:disabled {
+    background-color: white;
+}
+
 a.navbar-brand {
     white-space: normal;
     text-align: center;
@@ -328,6 +336,14 @@ body {
     color: #f5f8ff;
 }
 
+.form-style-7 a.no-style {
+    display: inline-block;
+    background-color: transparent;
+    padding: unset;
+    color: black;
+    border: none;
+}
+
 .form-style-7 .danger {
     background: #ef2a2a;
     border: none;
@@ -358,6 +374,12 @@ body {
 .form-style-7 a:hover {
     background: #6B9FFF;
     color: #fff;
+}
+
+.form-style-7 a.no-style:hover {
+    background-color: transparent;
+    color: black;
+    text-decoration: underline;
 }
 
 .form-style-7 .danger:hover {

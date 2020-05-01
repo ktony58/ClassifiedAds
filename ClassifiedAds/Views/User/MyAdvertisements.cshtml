@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ClassifiedAds.Data.Dtos.UserAdvertisement>
+
+@{
+    ViewData["Title"] = "My Advertisements";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class='table table-condensed table-responsive-lg text-nowrap table-hover'>
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Advertisement.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Advertisement.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Advertisement.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Advertisement.CostPerClick)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Clicks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostPerClick)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr onclick="location.href = '@(Url.Action("View", "User", new { id = item.Id }))'">
+                <td class="col-md-2">
+                    @Html.DisplayFor(modelItem => item.Advertisement.Title)
+                </td>
+                <td class="col-6">
+                    @Html.DisplayFor(modelItem => item.Advertisement.Description)
+                </td>
+                <td class="col-1">
+                    @Html.DisplayFor(modelItem => item.Advertisement.Address)
+                </td>
+                <td class="col-1">
+                    @Html.DisplayFor(modelItem => item.Advertisement.CostPerClick)
+                </td>
+                <td class="col-1">
+                    @Html.DisplayFor(modelItem => item.Clicks)
+                </td>
+                <td class="col-1">
+                    @Html.DisplayFor(modelItem => item.CostPerClick)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
